@@ -1,2 +1,36 @@
-# Recovery-Server-in-Legacy-Infra
-동아리 인프라에서 버려진 서버 살려보기
+# Recovering a Server in Legacy Infrastructure
+
+동아리의 레거시 인프라에서 장기간 방치된 서버를 식별하고, 실제 네트워크 연결 상태와 서비스 노출을 확인한 뒤 안전한 복구 방향을 정리한 기록입니다.
+
+## Project Goal
+
+- 오래된 인수인계 토폴로지와 실제 케이블 연결 상태 비교
+- 외부 관리 경로가 동작하지 않는 원인 추적
+- 격리된 직접 연결을 통한 서버 식별과 서비스 확인
+- 데이터 보존과 재설치를 고려한 복구 절차 수립
+
+## Timeline
+
+| Day | 기록 | 주요 내용 |
+| --- | --- | --- |
+| 1 | [Asset and Topology](docs/day-01-asset-and-topology.md) | 기존 토폴로지 검증, 물리 연결 확인, 다음 실험 계획 |
+| 2 | [Establishing a Direct Link](docs/day-02-establishing-a-direct-link.md) | 서버 NIC 식별, 직접 연결, 제한된 서비스 조사 |
+| 3 | [Service Validation](docs/day-03-service-validation.md) | 노출 서비스 재검증과 안전한 복구 방향 결정 |
+
+## Key Findings
+
+- 인수인계된 토폴로지와 실제 배선 상태가 일치하지 않았습니다.
+- 서버 NIC와 노트북을 직접 연결해 대상 서버와의 통신 경로를 확인했습니다.
+- 서버에는 오래된 Linux 기반 서비스가 남아 있었지만 유효한 관리자 계정은 확인되지 않았습니다.
+- 취약점 이용보다 격리, 디스크 백업, 데이터 확인, 재설치 순서가 적절하다고 판단했습니다.
+
+## Public Disclosure Policy
+
+이 저장소는 실제 운영 인프라를 다루므로 공개본에서 다음 정보를 제거했습니다.
+
+- 실제 IP, Domain, Hostname과 상세 Network Topology
+- 전체 Port Scan 결과와 원격 접속 대상 식별자
+- 개인 사용자명, 자산 식별 정보와 촬영 위치 정보
+- GPS·기기 모델·촬영 시각을 포함한 사진 EXIF
+
+원본 자료는 공개 저장소 밖에 보관하며, 여기에는 복구 과정과 판단 근거를 이해하는 데 필요한 정보만 남깁니다.
