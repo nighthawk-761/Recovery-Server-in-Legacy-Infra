@@ -7,11 +7,19 @@
 Remote Desktop Service의 상세 Version을 다시 확인했지만 추가 정보는 얻지 못했습니다. 일부 Legacy Service에도 연결을 시도해 다음 상태를 확인했습니다.
 
 - Remote Desktop Service는 계속 응답했습니다.
+
+![Remote Desktop Service Version 재확인](../assets/day-03/xrdp-version.png)
+
 - RPC Query는 정상적인 정보를 반환하지 않았습니다.
+
+![RPC Service 응답 확인](../assets/day-03/rpc-check.png)
+
 - SSH Banner를 통해 이전 조사와 같은 OpenSSH 8.0 계열임을 다시 확인했습니다.
 - 그 외 Service는 복구에 필요한 최소 범위를 넘기지 않고 조사를 중단했습니다.
 
-실제 Endpoint, 사용자명, 명령 출력과 전체 Port 목록은 공개본에 포함하지 않았습니다.
+![응답한 Service별 연결 결과 확인](../assets/day-03/service-probes.png)
+
+조사 근거를 보존하기 위해 원본 명령 출력 캡처를 유지했습니다.
 
 ## 복구 방향
 

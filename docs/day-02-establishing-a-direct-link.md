@@ -9,6 +9,8 @@
 - 케이블 연결: Ping 응답 확인
 - 케이블 분리: 요청 시간 초과
 
+![케이블 연결 상태에 따른 Ping 응답 확인](../assets/day-02/ping-validation.png)
+
 이 결과로 조사 중인 주소가 해당 서버 NIC에 할당돼 있다는 것을 확인했습니다.
 
 시설 방화벽 상태도 함께 확인했습니다. 외부에서 불필요하게 접근 가능한 정책은 차단하도록 요청했으며, 이후 조사는 외부 경로가 아닌 서버와 노트북의 직접 연결로 진행했습니다.
@@ -28,13 +30,20 @@ Legacy Server NIC
 
 양방향 Packet 송수신과 Ping 응답을 확인해 서버와의 직접 통신에 성공했습니다.
 
+![서버 NIC와 직접 연결한 뒤 확인한 Ping 응답](../assets/day-02/direct-ping.png)
+
+![외부 연결을 끊고 유선 어댑터로만 통신한 상태](../assets/day-02/adapter-direct-link.png)
+
 ## 제한된 서비스 조사
 
 조사는 소유 조직의 서버에 대한 복구 목적으로, 외부 네트워크를 끊은 상태에서 수행했습니다.
 
 1. TCP 연결 가능 여부를 먼저 확인했습니다.
 2. 응답한 Service에 한해서 Version Detection을 수행했습니다.
-3. 실제 주소와 전체 Port 목록은 공개본에서 제외했습니다.
+
+![직접 연결 상태에서 확인한 TCP Port](../assets/day-02/nmap-ports.png)
+
+![응답한 Port의 Service와 Version 확인](../assets/day-02/nmap-services.png)
 
 확인된 주요 사항은 다음과 같습니다.
 
@@ -49,7 +58,9 @@ Legacy Server NIC
 
 Remote Desktop Service가 응답해 Login 화면까지 접근할 수 있었습니다. 하지만 전달받은 유효한 관리자 계정은 없었고, 임의의 권한 획득은 복구 목적에 적절하지 않다고 판단해 Login 시도는 중단했습니다.
 
-> 실제 IP, Hostname, 사용자명과 Port Scan 캡처는 공개 저장소에서 제외했습니다.
+![XRDP Login 화면 확인](../assets/day-02/xrdp-login.jpg)
+
+> 조사 근거를 보존하기 위해 원본 캡처를 유지했습니다. 캡처의 Endpoint와 사용자명은 조사 당시 기록입니다.
 
 ## Day 2 결론
 
